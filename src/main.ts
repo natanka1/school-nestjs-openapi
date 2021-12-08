@@ -1,11 +1,15 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module'
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
+import * as winston from 'winston';
+import { AppModule } from './app.module'
+import { createLoggerService } from '@natankamusher/custom-logger-nest';
+
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule,{
-    logger: ['error', 'warn', 'log', 'debug', 'verbose'],
+  
+  const app = await NestFactory.create(AppModule, {
+    logger: createLoggerService()
   });
 
   const config = new DocumentBuilder()

@@ -4,6 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { updateProperties } from '../utils/functions';
 import { Classroom,ClassroomDocument} from '../classroom/schemas/classroom.schema';
 
+
 @Injectable()
 export class ClassroomService {
   constructor(@InjectModel(Classroom.name) private classroomModel: Model<ClassroomDocument>) {}
