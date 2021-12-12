@@ -21,7 +21,7 @@
     "test:e2e": "cross-env NODE_ENV=development jest --config ./test/jest-e2e.json --maxWorkers=1"
   },
   "dependencies": {
-    "@natankamusher/custom-logger-nest": "0.0.1",
+    "@natankamusher/custom-logger-nest": "file:../tsgs-nest-logger",
     "@nestjs/common": "^8.0.0",
     "@nestjs/config": "^1.0.1",
     "@nestjs/core": "^8.0.0",
