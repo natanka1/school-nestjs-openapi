@@ -4,13 +4,12 @@ import { ValidationPipe } from '@nestjs/common';
 
 import * as winston from 'winston';
 import { AppModule } from './app.module'
-import { createLoggerService } from '@natankamusher/custom-logger-nest';
 
 async function bootstrap() {
   
-  const app = await NestFactory.create(AppModule, {
-    logger: createLoggerService()
-  });
+  const app = await NestFactory.create(AppModule
+
+  );
 
   const config = new DocumentBuilder()
     .setTitle('School example')

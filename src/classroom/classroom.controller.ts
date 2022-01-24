@@ -1,9 +1,8 @@
 
 import { Controller, Get, Post, Body, Patch, Param, Delete, UseFilters, Inject } from '@nestjs/common';
-import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { ClassroomService } from './classroom.service';
 import { BadRequestExceptionFilter } from '../utils/exceptions';
-import { Logger } from 'winston';
+// import { Logger } from 'winston';
 
 import { Serialize } from '../decorators'
 import {cast} from '../utils/functions'
@@ -16,7 +15,7 @@ import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 @ApiTags('Classroom')
 @Controller('classroom')
 export class ClassroomController {
-  constructor(@Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger, private readonly classroomService: ClassroomService) {}
+  constructor(private readonly classroomService: ClassroomService) {}
   
   
   @Post()
@@ -27,7 +26,6 @@ export class ClassroomController {
     try{
       const classroom = cast<CreateClassroomRequestDto, Classroom>(dto)
       const createdClassroom = await this.classroomService.create(classroom);
-      this.logger.info("info message from logger");
       return new ClassroomResponseDto(createdClassroom)
 
     } catch(error){
@@ -39,13 +37,6 @@ export class ClassroomController {
   @Get('/log')
   logMessage() {
     const obj={a: "sldksdlj", b:5}
-    this.logger.log({
-      level: 'info', message: "info message from logger"
-    });
-    this.logger.debug("debug message from logger", obj);
-    this.logger.error("error message from logger");
-    this.logger.verbose("verbose message from logger");
-    this.logger.warn("warn message from logger");
   }
 
 
