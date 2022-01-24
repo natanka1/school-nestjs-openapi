@@ -5,6 +5,7 @@ import { APP_PIPE } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ClassroomModule } from './classroom/classroom.module';
 import { StudentModule } from './student/student.module';
+import { AppController } from './app/app.controller';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { StudentModule } from './student/student.module';
     },
     Logger
   ],
+  controllers: [AppController],
 })
 
 
